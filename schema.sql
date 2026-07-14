@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS attendees (
+  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(255) UNIQUE NOT NULL,
+  deleted_at TIMESTAMP WITH TIME ZONE DEFAULT NULL,
+  organization_id text DEFAULT (auth.jwt()->'o'->>'id');
+);
